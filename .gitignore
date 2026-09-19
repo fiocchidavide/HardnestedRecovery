@@ -36,3 +36,8 @@ coverage.xml
 # Nested log files, recovered keys
 .nested.log
 *.keys
+
+# Build artifacts
+*.o
+*.d
+hardnested_main

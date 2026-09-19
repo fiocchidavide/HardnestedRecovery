@@ -3,6 +3,16 @@ CC = gcc
 CFLAGS = -Wall -fPIC -I. -I./pm3 -I./hardnested
 LDFLAGS = -static -llzma -lpthread -lm
 
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S),Darwin)
+# macOS has no static libc and no separate liblzma; pull it from Homebrew
+# and drop -static (fully static binaries aren't supported on macOS).
+BREW_XZ_PREFIX := $(shell brew --prefix xz 2>/dev/null)
+CFLAGS += -I$(BREW_XZ_PREFIX)/include
+LDFLAGS = -L$(BREW_XZ_PREFIX)/lib -llzma -lpthread -lm
+endif
+
 HARDNESTED_DIR = .
 
 # Source files

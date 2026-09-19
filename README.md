@@ -5,9 +5,15 @@ You can collect nonces on Flipper Zero with the NFC app using [PR 3822](https://
 
 ## Setup
 
-First, install dependencies (Ubuntu):
+First, install dependencies.
+
+Ubuntu:
 
 `sudo apt update;sudo apt install -y build-essential liblzma-dev`
+
+macOS (Xcode Command Line Tools + Homebrew's `xz` for liblzma):
+
+`xcode-select --install; brew install xz`
 
 Then compile the program:
 
